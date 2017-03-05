@@ -131,10 +131,13 @@ KV.prototype.get = function (key, opts, cb) {
       keys.forEach(function (key) {
         self.log.get(key, function (err, doc) {
           if (err) return cb(err)
-          if (docs[key] === 'put') {
-            values[key] = opts.fields ? doc.value : { value: doc.value.v }
+          if (opts.fields) {
+            values[key] = doc.value
+          } else if (docs[key] === 'put') {
+            values[key] = { value: doc.value.v }
           } else if (docs[key] === 'del') {
-            values[key] = opts.fields ? doc.value : { deleted: true }
+            values[key] = { deleted: true }
+            if (doc.value.v) values[key].value = doc.value.v
           }
           else return cb(new Error('unknown type'))
           if (--pending === 0) cb(null, values)

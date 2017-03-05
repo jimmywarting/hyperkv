@@ -100,7 +100,7 @@ hyperlog hashes to set values.
 Each value is an object of one of two forms:
 
 - `{ value: ... }` - the value of the key
-- `{ deleted: true }` - tombstone indicating the key has been deleted
+- `{ deleted: true, value: ... }` - tombstone indicating the key has been deleted (with optional value)
 
 It is possible to receive both types for the same key; it is left up to the api
 consumer to decide how the data is best interpreted.
@@ -120,6 +120,8 @@ refer to the current "head" key hashes.
 Note that keys are only removed with respect to `opts.links`, not globally and
 that edits made in forks may cause deleted keys to "reappear". This is by
 design.
+
+If `opts.value` is set, the deletion tombstone will include a value.
 
 `cb(err, node)` fires from the underlying `log.add()` call.
 
