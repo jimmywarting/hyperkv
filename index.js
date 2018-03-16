@@ -152,7 +152,9 @@ KV.prototype.createReadStream = function (opts) {
     gt: opts.gt,
     gte: opts.gte,
     lt: opts.lt,
-    lte: opts.lte
+    lte: opts.lte,
+    sync: false,
+    old: opts.old
   }
   var stream = through.obj(write)
   self.dex.ready(function () {
