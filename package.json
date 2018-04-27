@@ -23,7 +23,6 @@
   "devDependencies": {
     "collect-stream": "^1.1.1",
     "end-of-stream": "^1.1.0",
-    "hyperlog": "^4.7.0",
     "memdb": "^1.0.1",
     "tape": "^4.2.2",
     "toposort": "^0.2.12"
@@ -31,6 +30,7 @@
   "dependencies": {
     "defined": "^1.0.0",
     "has": "^1.0.1",
+    "hyperlog": "^4.7.0",
     "hyperlog-index": "^5.0.1",
     "inherits": "^2.0.1",
     "level": "^1.4.0",
