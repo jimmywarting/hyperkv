@@ -153,6 +153,7 @@ KV.prototype.createReadStream = function (opts) {
     gte: opts.gte,
     lt: opts.lt,
     lte: opts.lte,
+    limit: opts.limit,
     sync: false,
     old: opts.old
   }
