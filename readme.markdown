@@ -157,6 +157,7 @@ requires an extra lookup in the implementation
 * `opts.fields` - when true, include the full document instead of the value
 * `opts.live` - when true, keep the stream open and add additional matching
 results as they are written to the db
+* `opts.limit` - close after this many documents if specified
 
 ## var stream = kv.createHistoryStream(key, opts={})
 
