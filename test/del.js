@@ -1,9 +1,9 @@
 var test = require('tape')
-var hyperkv = require('../')
 var memdb = require('memdb')
 var hyperlog = require('hyperlog')
 var sub = require('subleveldown')
 var eos = require('end-of-stream')
+var Hyperkv = require('../')
 
 // Sync two hyperlogs together.
 function sync (a, b, done) {
@@ -26,7 +26,7 @@ function sync (a, b, done) {
 test('del', function (t) {
   t.plan(12)
   var db = memdb()
-  var kv = hyperkv({
+  var kv = new Hyperkv({
     log: hyperlog(sub(db, 'log'), { valueEncoding: 'json' }),
     db: sub(db, 'kv')
   })
@@ -69,11 +69,11 @@ test('return delete and put when there is ambiguity', function (t) {
 
   var db1 = memdb()
   var db2 = memdb()
-  var kv1 = hyperkv({
+  var kv1 = new Hyperkv({
     log: hyperlog(sub(db1, 'log'), { valueEncoding: 'json' }),
     db: sub(db1, 'kv')
   })
-  var kv2 = hyperkv({
+  var kv2 = new Hyperkv({
     log: hyperlog(sub(db2, 'log'), { valueEncoding: 'json' }),
     db: sub(db2, 'kv')
   })

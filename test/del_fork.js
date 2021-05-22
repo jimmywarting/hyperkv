@@ -1,15 +1,15 @@
 var test = require('tape')
-var hyperkv = require('../')
 var memdb = require('memdb')
 var hyperlog = require('hyperlog')
+var Hyperkv = require('../index.js')
 
 test('del forks', function (t) {
   t.plan(19)
-  var kv0 = hyperkv({
+  var kv0 = new Hyperkv({
     log: hyperlog(memdb(), { valueEncoding: 'json' }),
     db: memdb()
   })
-  var kv1 = hyperkv({
+  var kv1 = new Hyperkv({
     log: hyperlog(memdb(), { valueEncoding: 'json' }),
     db: memdb()
   })

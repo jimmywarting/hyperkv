@@ -1,11 +1,11 @@
-var hyperkv = require('../')
+var Hyperkv = require('../index.js')
 var hyperlog = require('hyperlog')
 var sub = require('subleveldown')
 
 var level = require('level')
 var db = level('/tmp/kv.db')
 
-var kv = hyperkv({
+var kv = new Hyperkv({
   log: hyperlog(sub(db, 'log'), { valueEncoding: 'json' }),
   db: sub(db, 'kv')
 })

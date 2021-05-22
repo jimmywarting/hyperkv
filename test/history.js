@@ -1,15 +1,15 @@
 var test = require('tape')
-var hyperkv = require('../')
 var memdb = require('memdb')
 var hyperlog = require('hyperlog')
 var sub = require('subleveldown')
 var collect = require('collect-stream')
 var toposort = require('toposort')
+var Hyperkv = require('../index.js')
 
 test('history', function (t) {
   t.plan(7)
   var db = memdb()
-  var kv = hyperkv({
+  var kv = new Hyperkv({
     log: hyperlog(sub(db, 'log'), { valueEncoding: 'json' }),
     db: sub(db, 'kv')
   })

@@ -1,13 +1,13 @@
 var test = require('tape')
-var hyperkv = require('../')
 var memdb = require('memdb')
 var hyperlog = require('hyperlog')
 var sub = require('subleveldown')
+var Hyperkv = require('../index.js')
 
 test('kv', function (t) {
   t.plan(9)
   var db = memdb()
-  var kv = hyperkv({
+  var kv = new Hyperkv({
     log: hyperlog(sub(db, 'log'), { valueEncoding: 'json' }),
     db: sub(db, 'kv')
   })

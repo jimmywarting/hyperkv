@@ -18,4 +18,3 @@ hyperkv pull
 hyperkv sync
 
   Replicate with another hyperkv using stdin and stdout.
-

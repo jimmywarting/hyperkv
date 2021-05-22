@@ -11,14 +11,14 @@ using a [multi-value register conflict strategy][2]
 ## put
 
 ``` js
-var hyperkv = require('hyperkv')
+var Hyperkv = require('hyperkv')
 var hyperlog = require('hyperlog')
 var sub = require('subleveldown')
 
 var level = require('level')
 var db = level('/tmp/kv.db')
 
-var kv = hyperkv({
+var kv = new Hyperkv({
   log: hyperlog(sub(db, 'log'), { valueEncoding: 'json' }),
   db: sub(db, 'kv')
 })
@@ -42,14 +42,14 @@ eadb22a224313d5fb5b811e50915f16491e7714dd32b83503c1e1a1db2bd9e9b
 ## get
 
 ``` js
-var hyperkv = require('hyperkv')
+var Hyperkv = require('hyperkv')
 var hyperlog = require('hyperlog')
 var sub = require('subleveldown')
 
 var level = require('level')
 var db = level('/tmp/kv.db')
 
-var kv = hyperkv({
+var kv = hyperkvnew H{
   log: hyperlog(sub(db, 'log'), { valueEncoding: 'json' }),
   db: sub(db, 'kv')
 })
@@ -71,10 +71,10 @@ $ node example/get.js greeting
 # api
 
 ``` js
-var hyperkv = require('hyperkv')
+var Hyperkv = require('hyperkv')
 ```
 
-## var kv = hyperkv(opts)
+## var kv = new Hyperkv(opts)
 
 * `opts.log` - [hyperlog](https://npmjs.org/package/hyperlog) instance created
 with `valueEncoding: 'json'`

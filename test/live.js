@@ -1,13 +1,13 @@
 var test = require('tape')
-var hyperkv = require('../')
 var memdb = require('memdb')
 var hyperlog = require('hyperlog')
 var sub = require('subleveldown')
+var Hyperkv = require('../index.js')
 
 test('live - with old', function (t) {
   t.plan(6)
   var db = memdb()
-  var kv = hyperkv({
+  var kv = new Hyperkv({
     log: hyperlog(sub(db, 'log'), { valueEncoding: 'json' }),
     db: sub(db, 'kv')
   })
@@ -35,7 +35,7 @@ test('live - with old', function (t) {
 test('live - only new', function (t) {
   t.plan(3)
   var db = memdb()
-  var kv = hyperkv({
+  var kv = new Hyperkv({
     log: hyperlog(sub(db, 'log'), { valueEncoding: 'json' }),
     db: sub(db, 'kv')
   })
